@@ -80,17 +80,15 @@ WSGI_APPLICATION = 'example.wsgi.application'
 
 DATABASES = {
    'default': {
-      'ENGINE': 'django.db.backends.postgresql_psycopg2',
-      'HOST': 'localhost',
-      'NAME': 'squealy',
-      'USER': 'root',
-      'PASSWORD': 'root',
+
    },
 }
 
 # Database for reports generation. Pass the DATABASE_URL variable from environment.
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['query_db'] = db_from_env
+query_db = dj_database_url.parse(os.environ.get('QUERY_DB'), conn_max_age=500)
+DATABASES['query_db'] = query_db
+DATABASES['default'] = db_from_env
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
