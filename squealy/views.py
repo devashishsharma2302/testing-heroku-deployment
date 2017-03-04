@@ -32,7 +32,6 @@ class ChartViewPermission(BasePermission):
     def has_permission(self, request, view):
         return True
 
-
 class ChartView(APIView):
     permission_classes = SquealySettings.get_default_permission_classes()
     permission_classes.append(ChartViewPermission)
@@ -43,7 +42,6 @@ class ChartView(APIView):
         """
         This is the API endpoint for executing the query and returning the data for a particular chart
         """
-        print connections
         chart_attributes = ['parameters', 'validations', 'transformations']
         chart = Chart.objects.filter(url=chart_url).prefetch_related(*chart_attributes).first()
         if not chart:
@@ -65,6 +63,7 @@ class ChartView(APIView):
             chart = Chart.objects.filter(url=chart_url).prefetch_related(*chart_attributes).first()
             if not chart:
                 raise ChartNotFoundException('No charts found at this path')
+
 
             data = self._process_chart_query(chart, params, user)
             return Response(data)

@@ -30,7 +30,7 @@ class Chart(models.Model):
     format = models.CharField(max_length=50,
                               default="GoogleChartsFormatter")
     type = models.CharField(max_length=20, default="ColumnChart")
-    options = fields.JSONField(null=True, blank=True, default={})
+    options = fields.JSONField(null=True, blank=True)
 
     def __unicode__(self):
         return self.name + "( /" + self.url + ")"
