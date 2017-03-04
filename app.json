@@ -5,7 +5,6 @@
   "logo": "https://github.com/hashedin/squealy/blob/master/squealy/static/media/logo.71a19eb7.png",
   "keywords": ["javascript", "googlecharts", "django", "python", "dashboard", "API"],
   "env": {
-    "DJANGO_SETTINGS_MODULE": "example.settings",
     "QUERY_DB": "mysql://root:root@localhost:3306/social_hu"
   }
 }
