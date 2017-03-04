@@ -134,7 +134,7 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 
-CORS_ORIGIN_WHITELIST += (tuple(os.environ.get('CORS_ORIGIN_WHITELIST').split(',')))
+CORS_ORIGIN_WHITELIST += (tuple(os.environ.get('CORS_ORIGIN_WHITELIST', '').split(',')))
 
 # REST_FRAMEWORK = {
 #                     'DEFAULT_PERMISSION_CLASSES': [
